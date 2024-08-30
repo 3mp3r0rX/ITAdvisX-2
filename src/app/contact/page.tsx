@@ -1,11 +1,12 @@
-'use client'
+'use client';
 
-import React, { useEffect, useState } from 'react';
-import ArrowIcon from "../../assets/icons/arrow-w.svg";
+import React, { useState, useEffect } from 'react';
+import ArrowIcon from "../../assets/icons/arrow-w.svg"; 
 import { Banner } from '@/components/Banner';
 import { Navbar } from '@/components/Navbar';
 import { CTA } from '@/components/CTA';
 import { Footer } from '@/components/Footer';
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 interface FormState {
   name: string;
@@ -15,7 +16,8 @@ interface FormState {
 
 const ContactUs: React.FC = () => {
   const [form, setForm] = useState<FormState>({ name: '', email: '', message: '' });
-  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [loading, setLoadingPage] = useState(true); 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({
@@ -26,125 +28,132 @@ const ContactUs: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setIsSubmitting(true);
     try {
+      
       console.log('Form submitted:', form);
+      
       setForm({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('Error submitting form:', error);
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
-  
+
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2000); 
+    
+    setTimeout(() => setLoadingPage(false), 2000); 
 
-    return () => setLoading(true);
+   
+    return () => setLoadingPage(true);
   }, []);
-
 
   return (
     <>
-    <Banner />
-    <Navbar />
-    <div className="bg-black text-white bg-gradient-to-b from-black via-indigo-800 to-purple-500 py-[72px] sm:py-24 relative overflow-clip">
-      <div className="absolute h-[375px] w-[750px] sm:w-[1536px] sm:h-[768px] rounded-[100%] bg-black left-1/2 -translate-x-1/2 border border-[#B48CDE] top-[calc(100%-120px)]"></div>
-      <div className="container relative">
-        <div className="flex items-center justify-center">
-          <p className="inline-flex gap-3 border py-1 px-2 rounded-lg border-white/30">
-            <span className="text-2xl font-manrope font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-yellow-200 to-sky-300">
-              Get in Touch with Us
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <ArrowIcon />
-            </span>
-          </p>
-        </div>
-        <div className="flex justify-center">
-          <h1 className="text-7xl sm:text-9xl font-bold tracking-tighter text-center mt-8">
-            Contact
-            <br />
-            ITAdvis
-            <span className="text-blue-500">X</span>
-          </h1>
-        </div>
-        <div className="flex justify-center">
-          <p className="text-center text-xl mt-8 max-w-md">
-            We're here to help you with all your IT needs. Fill out the form below, and let's start the conversation!
-          </p>
-        </div>
-        <div className="flex justify-center mt-8">
-          <form
-            onSubmit={handleSubmit}
-            className="rounded-lg shadow-xl flex flex-col px-8 py-8 bg-white max-w-md w-full"
-          >
-            <h1 className="text-2xl font-bold">Send a message</h1>
-
-            <label htmlFor="fullname" className="text-gray-500 font-light mt-8">
-              Full name<span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What's your good name?"
-              className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
-              required
-            />
-
-            <label htmlFor="email" className="text-gray-500 font-light mt-4">
-              E-mail<span className="text-red-500">*</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="What's your email address?"
-              className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
-              required
-            />
-
-            <label htmlFor="message" className="text-gray-500 font-light mt-4">
-              Message<span className="text-red-500">*</span>
-            </label>
-            <textarea
-              rows={7}
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              placeholder="What you want to say?"
-              className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
-              required
-            ></textarea>
-
-            <div className="flex flex-row items-center justify-start">
-              <button
-                type="submit"
-                className="px-10 mt-8 py-2 bg-[#130F49] text-gray-50 font-light rounded-md text-lg flex flex-row items-center"
-              >
-                {loading ? "Sending..." : "Send"}
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="text-cyan-500 ml-2"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <Banner />
+          <Navbar />
+          <div className="bg-black text-white bg-gradient-to-b from-black via-indigo-800 to-purple-500 py-[72px] sm:py-24 relative overflow-clip">
+            <div className="absolute h-[375px] w-[750px] sm:w-[1536px] sm:h-[768px] rounded-[100%] bg-black left-1/2 -translate-x-1/2 border border-[#B48CDE] top-[calc(100%-120px)]"></div>
+            <div className="container relative">
+              <div className="flex items-center justify-center">
+                <p className="inline-flex gap-3 border py-1 px-2 rounded-lg border-white/30">
+                  <span className="text-2xl font-manrope font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-yellow-200 to-sky-300">
+                    Get in Touch with Us
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <ArrowIcon />
+                  </span>
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <h1 className="text-7xl sm:text-9xl font-bold tracking-tighter text-center mt-8">
+                  Contact
+                  <br />
+                  ITAdvis
+                  <span className="text-blue-500">X</span>
+                </h1>
+              </div>
+              <div className="flex justify-center">
+                <p className="text-center text-xl mt-8 max-w-md">
+                  We're here to help you with all your IT needs. Fill out the form below, and let's start the conversation!
+                </p>
+              </div>
+              <div className="flex justify-center mt-8">
+                <form
+                  onSubmit={handleSubmit}
+                  className="rounded-lg shadow-xl flex flex-col px-8 py-8 bg-white max-w-md w-full"
                 >
-                  <path
-                    d="M9.00967 5.12761H11.0097C12.1142 5.12761 13.468 5.89682 14.0335 6.8457L16.5089 11H21.0097C21.562 11 22.0097 11.4477 22.0097 12C22.0097 12.5523 21.562 13 21.0097 13H16.4138L13.9383 17.1543C13.3729 18.1032 12.0191 18.8724 10.9145 18.8724H8.91454L12.4138 13H5.42485L3.99036 15.4529H1.99036L4.00967 12L4.00967 11.967L2.00967 8.54712H4.00967L5.44417 11H12.5089L9.00967 5.12761Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-          </form>
-        </div>
+                  <h1 className="text-2xl text-black font-bold">Send a message</h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 mx-2 md:grid-cols-3 gap-6 max-w-6xl md:mx-auto my-20">
+                  <label htmlFor="fullname" className="text-gray-500 font-light mt-8">
+                    Full name<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="What's your good name?"
+                    className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
+                    required
+                  />
+
+                  <label htmlFor="email" className="text-gray-500 font-light mt-4">
+                    E-mail<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="What's your email address?"
+                    className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
+                    required
+                  />
+
+                  <label htmlFor="message" className="text-gray-500 font-light mt-4">
+                    Message<span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    rows={7}
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="What you want to say?"
+                    className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
+                    required
+                  ></textarea>
+
+                  <div className="flex flex-row items-center justify-start">
+                    <button
+                      type="submit"
+                      className="px-10 mt-8 py-2 bg-[#130F49] text-gray-50 font-light rounded-md text-lg flex flex-row items-center"
+                    >
+                      {isSubmitting ? "Sending..." : "Send"}
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        className="text-cyan-500 ml-2"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polygon
+                          points="9,5 11,5 14,12 11,19 9,19 12,13 5,13 3,15 1,15 4,12 2,9 4,9 5,11 12,11"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 mx-2 md:grid-cols-3 gap-6 max-w-6xl md:mx-auto my-20">
           <div className="card p-8 shadow rounded-md flex flex-row items-center space-x-4 hover:cursor-pointer hover:shadow-lg transition duration-200">
             <svg
               width="24"
@@ -188,10 +197,12 @@ const ContactUs: React.FC = () => {
             <p className="text-white/70 font-bold">itadvisx@itadvisx.com</p>
           </div>
         </div>
-      </div>
-    </div>
-    <CTA />
-    <Footer />
+            </div>
+          </div>
+          <CTA />
+          <Footer />
+        </>
+      )}
     </>
   );
 };

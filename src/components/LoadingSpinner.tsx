@@ -1,15 +1,14 @@
-// components/LoadingSpinner.tsx
 const LoadingSpinner = () => {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-white opacity-90 z-50">
         <div className="loader"></div>
         <style jsx>{`
           .loader {
-            border: 4px solid rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(0, 0, 0, 0.1);
             border-radius: 50%;
             border-top: 4px solid #333;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
           }
           @keyframes spin {

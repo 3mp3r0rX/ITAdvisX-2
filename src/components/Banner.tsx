@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const Banner = () => {
   return (
     <div className="py-3 text-center animated-background bg-gradient-to-r from-indigo-500 from-20% via-sky-500 via-30% to-emerald-500 to-90%">
@@ -5,9 +7,9 @@ export const Banner = () => {
         <p className="font-medium">
           <span className="hidden sm:inline"> Transform your digital presence with </span>
           <span className="font-bold">ITAdvisX</span> - 
-          <a href="#" className="underline underline-offset-4 ml-1">
+          <Link href="/#Services" className="underline underline-offset-4 ml-1">
             Discover our solutions
-          </a>
+          </Link>
         </p>
       </div>
     </div>
