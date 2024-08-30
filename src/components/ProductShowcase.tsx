@@ -19,14 +19,14 @@ export const ProductShowcase = () => {
   }, [slideCount]);
 
   return (
-    <div className="relative bg-black bg-gradient-to-b from-black to-[#5D2CA8] text-white py-[72px] sm:py-24 ">
+    <div id='Services' className="relative bg-black bg-gradient-to-b from-black to-[#5D2CA8] text-white py-[72px] sm:py-24 ">
       <div className="container mx-auto px-4">
         <h2 className="text-center font-bold text-5xl tracking-tighter">
           Our Services
         </h2>
         <div className="max-w-xl mx-auto">
           <p className="text-center mt-5 text-xl text-white/70">
-            Here is a few of the awesome Services we provide.
+          We offer a wide range of IT services designed to meet your business needs. Explore our offerings and see how we can help your business thrive.
           </p>
         </div>
         <div className="mt-16 relative overflow-hidden">

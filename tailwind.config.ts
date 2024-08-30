@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        'gradient': 'gradient 8s linear infinite',
+      },
       container: {
         padding: '1rem', 
         center: true,
