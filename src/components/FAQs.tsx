@@ -3,7 +3,6 @@
 import { useState } from "react";
 import PluseIcom from "../assets/icons/plus.svg"
 import MinusIcon from "../assets/icons/minus.svg"
-import clsx from "clsx";
 import { motion , AnimatePresence } from "framer-motion";
 
 const items = [

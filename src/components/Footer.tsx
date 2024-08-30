@@ -33,10 +33,10 @@ export const Footer = () => {
             <ul className="list-none mt-4 text-right">
               <h4 className="text-white text-[18px] mb-4">Legal</h4>
               <li className="font-poppins font-normal text-[16px] leading-[24px] text-white/70 hover:text-secondary cursor-pointer">
-                <Link href="/LegalPages/PrivacyPolicy">Privacy Policy</Link>
+                <Link href="/PrivacyPolicy">Privacy Policy</Link>
               </li>
               <li className="font-poppins font-normal text-[16px] leading-[24px] text-white/70 hover:text-secondary cursor-pointer">
-                <Link href="/LegalPages/TermsOfService">Terms Of Service</Link>
+                <Link href="/TermsOfService">Terms Of Service</Link>
               </li>
               <br />
               <li>

@@ -6,11 +6,11 @@ import Support from "../assets/icons/support.svg";
 import Secured from "../assets/icons/secured.svg";
 import { Feature } from "./Feature";
 
-// Define features with appropriate React component types for icons
+
 export const features = [
   {
     id: "feature-1",
-    icon: Support, // Ensure these are React components
+    icon: Support, 
     title: "24/7 Support",
     content:
       "Our dedicated team of IT experts is at your service around the clock, ensuring that any technical issues or concerns are addressed promptly, no matter when they arise. You can count on us 24 hours a day, 7 days a week, 365 days a year.",

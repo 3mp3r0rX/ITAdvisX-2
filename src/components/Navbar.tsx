@@ -40,7 +40,7 @@ export const Navbar = () => {
             <Link href="/contact" className="text-opacity-60 text-white hover:text-opacity-100">Contact us</Link>
           </nav>
           
-          <button className="bg-white py-2 px-4 rounded-lg sm:flex hidden"><a href="https://calendly.com/anasalnaser69"> Schedule a call </a></button>
+          <button className="bg-white py-2 px-4 rounded-lg sm:flex hidden"><a href="https://calendly.com/majedalnasr7"> Schedule a call </a></button>
         </div>
       </div>
      
@@ -53,7 +53,7 @@ export const Navbar = () => {
             <Link href="/contact" className="text-white text-opacity-60 hover:text-opacity-100" onClick={toggleMenu}>Contact us</Link>
           </nav>
         
-          <button className="mt-4 bg-white py-2 px-4 rounded-lg w-full"><a href="https://calendly.com/anasalnaser69"> Schedule a call </a></button>
+          <button className="mt-4 bg-white py-2 px-4 rounded-lg w-full"><a href="https://calendly.com/majedalnasr7"> Schedule a call </a></button>
         </div>
       )}
     </div>

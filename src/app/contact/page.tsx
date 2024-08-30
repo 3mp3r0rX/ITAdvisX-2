@@ -29,18 +29,31 @@ const ContactUs: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+  
     try {
-      
-      console.log('Form submitted:', form);
-      
-      setForm({ name: '', email: '', message: '' });
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+  
+      const result = await response.json();
+      console.log('Form submitted:', result);
+  
+      if (response.ok) {
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        console.error('Error submitting form:', result.message);
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
     } finally {
       setIsSubmitting(false);
     }
   };
-
+  
   useEffect(() => {
     
     setTimeout(() => setLoadingPage(false), 2000); 
