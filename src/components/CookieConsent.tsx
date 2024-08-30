@@ -4,17 +4,16 @@ import { useState } from 'react';
 import Cookie from 'js-cookie';
 
 const CookieConsent: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(() => {
-    return !Cookie.get('cookies-accepted');
-  });
+  const [isVisible, setIsVisible] = useState(false)
 
   const handleAccept = () => {
-    setIsVisible(false);
-    
     Cookie.set('cookies-accepted', 'true', { expires: 365 }); 
+    setIsVisible(false);
   };
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-black text-white p-4 text-center">

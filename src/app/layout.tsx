@@ -37,8 +37,8 @@ export default function RootLayout({
       </head>
       <body className={clsx(dmSans.className, "antialiased")}>
         {children}
-        <CookieConsent />
         <Analytics />
+        <CookieConsent />
         </body>
     </html>
   );
