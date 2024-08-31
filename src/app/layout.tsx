@@ -4,6 +4,7 @@ import clsx from "clsx";
 import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
 import { Analytics } from "@vercel/analytics/react"
+import ScrollUpButton from "@/components/ScrollUpButton";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
         {children}
         <Analytics />
         <CookieConsent />
+        <ScrollUpButton />
         </body>
     </html>
   );

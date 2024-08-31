@@ -28,9 +28,6 @@ export const Hero = () => {
         we believe in the power of technology to transform businesses and drive innovation. Our mission is to empower organizations with cutting-edge IT solutions, strategic guidance, and unparalleled expertise. Let's build something amazing with us, Start your business with us.
         </p>
         </div>
-        <div className="flex justify-center mt-8">
-          <button className="bg-white text-black py-3 px-5 rounded-lg font-medium">Get Touch</button>
-        </div>
        </div>
       
     </div>
