@@ -40,12 +40,19 @@ export const Navbar = () => {
             <Link href="/contact" className="text-opacity-60 text-white hover:text-opacity-100">Contact us</Link>
           </nav>
           
-          <button className="bg-white py-2 px-4 rounded-lg sm:flex hidden"><a href="https://calendly.com/majedalnasr7"> Schedule a call </a></button>
+          <div className="sm:flex hidden gap-4">
+            <button className="bg-white py-2 px-4 rounded-lg">
+              <a href="https://calendly.com/majedalnasr7">Schedule a call</a>
+            </button>
+            <button className="bg-blue-500 text-white py-2 px-4 rounded-lg">
+              <a href="/xperit" className="text-white">XperIT</a>
+            </button>
+          </div>
         </div>
       </div>
      
       {menuOpen && (
-        <div className=" sm:hidden bg-black px-4 py-2">
+        <div className="sm:hidden bg-black px-4 py-2">
           <nav className="flex flex-col gap-4">
             <Link href="/" className="text-white text-opacity-60 hover:text-opacity-100" onClick={toggleMenu}>Home</Link>
             <Link href="/#Features" className="text-white text-opacity-60 hover:text-opacity-100" onClick={toggleMenu}>Features</Link>
@@ -53,7 +60,8 @@ export const Navbar = () => {
             <Link href="/contact" className="text-white text-opacity-60 hover:text-opacity-100" onClick={toggleMenu}>Contact us</Link>
           </nav>
         
-          <button className="mt-4 bg-white py-2 px-4 rounded-lg w-full"><a href="https://calendly.com/majedalnasr7"> Schedule a call </a></button>
+          <button className="mt-4 bg-white py-2 px-4 rounded-lg w-full"><a href="https://calendly.com/majedalnasr7">Schedule a call</a></button>
+          <button className="mt-4 bg-sky-300 text-white py-2 px-4 rounded-lg w-full"><a href="/xperit" className="text-white">XperIT</a></button>
         </div>
       )}
     </div>

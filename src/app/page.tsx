@@ -22,8 +22,8 @@ export default function Home() {
     setTimeout(() => setLoading(false), 2000); 
 
     AOS.init({
-      duration: 1200, // Animation duration in milliseconds
-      once: true,     // Only animate once when scrolling down
+      duration: 1200,
+      once: true,    
     });
 
     return () => setLoading(true);
